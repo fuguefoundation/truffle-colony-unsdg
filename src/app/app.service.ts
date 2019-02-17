@@ -65,4 +65,8 @@ export class AppService {
   getColonyInstance() {
     return this.bottomSheet$;
   }
+
+  clearBottomSheet() {
+      this.bottomSheet$.splice(-2, 2);
+  }
 }

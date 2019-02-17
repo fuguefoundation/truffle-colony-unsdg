@@ -21,8 +21,12 @@ export class DomainsComponent implements OnInit {
   constructor(@Inject(DomainsService) private ds: DomainsService) { }
 
   ngOnInit() {
+    this.getGoals();
+  }
+
+  getGoals() {
     this.goals = this.shuffle(this.ds.getGoals());
-    console.log(this.goals);
+    console.log(this.goals);     
   }
 
   setAsDomain(index) {

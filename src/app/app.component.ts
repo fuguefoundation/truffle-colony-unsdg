@@ -4,7 +4,6 @@ import { AppService } from "./app.service";
 import { DomainsService } from "./services/domains.service";
 import { DomainInstance } from "./models/domain";
 import { Tasks } from "./models/tasks";
-import { Goals } from "./models/goals";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BottomSheetComponent} from './utils/bottomsheet.component';
 
@@ -185,5 +184,6 @@ export class AppComponent implements OnInit {
     s.reset();
     this.state.colonyClient = [];
     this.model.domain.id = null;
+    this.appService.clearBottomSheet();
   }
 }
