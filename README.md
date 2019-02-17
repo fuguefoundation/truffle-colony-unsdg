@@ -13,10 +13,9 @@ _You may find it helpful to use Node Version Manager (`nvm`) to manage Node vers
 
 ### Clone the repo
 
-Open a new terminal window and start [Ganache](https://github.com/trufflesuite/ganache-cli):
-
 ```
 git clone https://github.com/fuguefoundation/truffle-colony-unsdg.git
+cd truffle-colony-unsdg
 ```
 
 ### Initialize the Project
@@ -24,6 +23,8 @@ git clone https://github.com/fuguefoundation/truffle-colony-unsdg.git
 ```
 yarn initialize
 ```
+
+Colony makes use of submodules. If you experience an error, it's possible you have not set up SSH keys with Github. check out [this doc](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) for more information.
 
 ### Install Project Packages
 
