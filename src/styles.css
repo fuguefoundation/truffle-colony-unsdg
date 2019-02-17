@@ -15,6 +15,7 @@
 .long-input-field {
     width: 360px;
 }
+
 .goals-header-image {
     background-image: url('./assets/global-goals.png');
     background-size: cover;

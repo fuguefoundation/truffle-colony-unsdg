@@ -2,7 +2,7 @@
     <mat-card >
         <mat-card-header>
             <div mat-card-avatar class="goals-header-image"></div>
-            <mat-card-title>{{goal.name}}</mat-card-title>
+            <mat-card-title><span *ngIf="!goal.name">Select UNSDG</span>{{goal.name}}</mat-card-title>
             <!-- <mat-card-subtitle>{{goal.desc}}</mat-card-subtitle> -->
         </mat-card-header>
         <img mat-card-image src="{{goal.img}}" alt="{{goal.name}}">

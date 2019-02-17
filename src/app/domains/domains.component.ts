@@ -27,7 +27,6 @@ export class DomainsComponent implements OnInit {
 
   setAsDomain(index) {
     this.scrollToTop();
-    //window.scroll(0,0);
     this.model.selectedDomain = this.goals[index];
     this.ds.updateSelctedDomain(this.model.selectedDomain)
   }
