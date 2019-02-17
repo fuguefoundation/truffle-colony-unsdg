@@ -1,6 +1,6 @@
-# colony-starter-angular
+# Colony UNSDG
 
-_Learn to build with Colony using Angular!_
+Develop the humanitarian within. Learn Truffle and Colony while applying the UN Sustainable Development Goals.
 
 ## Prerequisites
 
@@ -10,6 +10,26 @@ _Learn to build with Colony using Angular!_
 _You may find it helpful to use Node Version Manager (`nvm`) to manage Node versions._
 
 ## Development
+
+### Clone the repo
+
+Open a new terminal window and start [Ganache](https://github.com/trufflesuite/ganache-cli):
+
+```
+git clone https://github.com/fuguefoundation/truffle-colony-unsdg.git
+```
+
+### Initialize the Project
+
+```
+yarn initialize
+```
+
+### Install Project Packages
+
+```
+yarn
+```
 
 ### Start Network
 
@@ -33,14 +53,6 @@ Once the contracts have been deployed, start [TrufflePig](https://github.com/Joi
 
 ```
 yarn start-trufflepig
-```
-
-### Seed Network
-
-Open a new terminal window and run the seed network script:
-
-```
-yarn seed-network
 ```
 
 ### Start Dev Server
