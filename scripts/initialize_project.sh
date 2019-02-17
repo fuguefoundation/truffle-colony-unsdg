@@ -10,15 +10,6 @@ log() {
   echo "\n  ${CYAN}[colony-starter-basic]${NONE} $1\n"
 }
 
-# Initialize git repository
-log "Initializing git repository..."
-git init
-
-# Add gitignore file
-log "Adding gitignore file..."
-echo "node_modules" >> .gitignore
-echo "node_modules"
-
 # Pull docker image
 log "Pulling docker image..."
 docker pull ethereum/solc:0.4.23

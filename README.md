@@ -4,8 +4,10 @@ Develop the humanitarian within. Learn Truffle and Colony while applying the UN 
 
 ## Prerequisites
 
-- Yarn 1.12.3
-- Node 10.12.0
+* Git >=2.6.4
+* Node >=10.12.0
+* Yarn >=1.12.0
+* Docker >=18.09.0
 
 _You may find it helpful to use Node Version Manager (`nvm`) to manage Node versions._
 
@@ -58,7 +60,7 @@ yarn start-trufflepig
 
 ### Start Dev Server
 
-Once the network has been seeded, start the development server:
+Open a new terminal in the project root and start the Angular development server:
 
 ```
 yarn start
@@ -66,7 +68,7 @@ yarn start
 
 ### Open Your Browser
 
-Open your browser and checkout the example react app::
+Open your browser and start saving the world!
 
 [localhost:4200](http://localhost:4200)
 

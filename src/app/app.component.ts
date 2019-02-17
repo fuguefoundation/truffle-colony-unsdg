@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     colonyClient: [],     // colonyClient (per account)
     networkClient: [],    // networkClient (per account)
   };
+  public selectedDomain = new DomainInstance();
 
   public model = {
     colony: {
@@ -53,13 +54,6 @@ export class AppComponent implements OnInit {
       address: "",
       name: "",
       symbol: "",
-    },
-    selectedDomain: {
-        name: "",
-        id: null,
-        desc: "",
-        img: "",
-        link: ""
     }
   };
 
@@ -72,6 +66,7 @@ export class AppComponent implements OnInit {
               }
 
   public ngOnInit(): void {
+      console.log(this.selectedDomain);
     this.start();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -88,8 +83,8 @@ export class AppComponent implements OnInit {
     this.appService.bottomSheetObservable.subscribe((state) => {
       console.log(state);
     });
-    this.ds.selectedDomainObservable.subscribe((domain) => {
-        this.model.selectedDomain = domain;
+    this.ds.selectedDomainObservable.subscribe((domain: DomainInstance) => {
+        this.selectedDomain = domain;
         console.log(domain);
     })
   }
@@ -142,7 +137,8 @@ export class AppComponent implements OnInit {
   public async getColonyClient() {
     this.appService.getColonyClient(this.state.networkClient[0], this.model.colony.id).then( (res) => {
       this.state.colonyClient[0] = res;
-      this.model.selectedDomain.name = "Please select UNSDG, then add the goal as a DOMAIN";
+      this.selectedDomain.name = "Please select UNSDG, then add the goal as a DOMAIN";
+      this.selectedDomain.desc = "";
       this.setStatus("Success!");
     });
   }
@@ -153,7 +149,7 @@ export class AppComponent implements OnInit {
     this.appService.addDomain(this.state.colonyClient[0], this.model.parentDomainId).then( (res) => {
       this.model.domain = res;
       this.setStatus("Success!");
-      const index = this.model.selectedDomain.id - 1;
+      const index = this.selectedDomain.id - 1;
       console.log(index);
       this.model.task = Tasks[index];
       console.log(this.model.task);

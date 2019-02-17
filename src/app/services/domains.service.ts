@@ -8,7 +8,7 @@ export class DomainsService {
 
     // selectedDomain: DomainInstance;
     public selectedDomainObservable = new Subject<{}>();
-    private selectedDomain$ = {};
+    private selectedDomain$ : DomainInstance;
 
   constructor() {
     this.watchSelctedDomain();
@@ -29,7 +29,7 @@ export class DomainsService {
   }
 
   watchSelctedDomain() {
-    this.selectedDomainObservable.subscribe((state) => {
+    this.selectedDomainObservable.subscribe((state: DomainInstance) => {
       this.selectedDomain$ = state;
     });
   }

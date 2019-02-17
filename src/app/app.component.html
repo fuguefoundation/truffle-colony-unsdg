@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>{{title}}</span>
+  <img src="../assets/colony-unsdg.png" alt="Colony UNSDG" style="width:20%; margin-left: -16px;">
   <span class="example-spacer"></span>
   <button mat-icon-button (click)="openBottomSheet()">
     <mat-icon aria-label="Meta">notes</mat-icon>
@@ -52,8 +52,8 @@
       <mat-card >
             <mat-card-header>
                 <div mat-card-avatar class="goals-header-image"></div>
-                <mat-card-title>{{model.selectedDomain.name}}</mat-card-title>
-                <mat-card-subtitle>{{model.selectedDomain.desc}}</mat-card-subtitle>
+                <mat-card-title>{{selectedDomain.name}}</mat-card-title>
+                <mat-card-subtitle>{{selectedDomain.desc}}</mat-card-subtitle>
             </mat-card-header>
         </mat-card>
       <div>
@@ -69,8 +69,8 @@
       <mat-card>
             <mat-card-header>
                 <div mat-card-avatar class="goals-header-image"></div>
-                <mat-card-title>{{model.selectedDomain.name}}</mat-card-title>
-                <mat-card-subtitle>{{model.selectedDomain.desc}}</mat-card-subtitle>
+                <mat-card-title>{{selectedDomain.name}}</mat-card-title>
+                <mat-card-subtitle>{{selectedDomain.desc}}</mat-card-subtitle>
             </mat-card-header>          
         <!-- <mat-card-header>Create Task <span *ngIf="model.task.title">: {{model.task.title}} {{model.task.desc}}</span></mat-card-header> -->
         <mat-card-content>
@@ -98,17 +98,17 @@
             <mat-card style="max-width: 50%;">
                 <mat-card-header>
                     <div mat-card-avatar class="goals-header-image"></div>
-                    <mat-card-title>{{model.selectedDomain.name}}</mat-card-title>
+                    <mat-card-title>{{selectedDomain.name}}</mat-card-title>
                     <!-- <mat-card-subtitle>{{goal.desc}}</mat-card-subtitle> -->
                 </mat-card-header>
-                <img mat-card-image src="{{model.selectedDomain.img}}" alt="{{model.selectedDomain.name}}">
+                <img mat-card-image src="{{selectedDomain.img}}" alt="{{selectedDomain.name}}">
                 <mat-card-content>
                     <p>
-                    {{model.selectedDomain.desc}}
+                    {{selectedDomain.desc}}
                     </p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <a mat-button href="{{model.selectedDomain.link}}" target="_blank">More Info</a>
+                    <a mat-raised-button href="{{selectedDomain.link}}" target="_blank">More Info</a>
                 </mat-card-actions>
             </mat-card>
         </div>
