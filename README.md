@@ -1,6 +1,6 @@
 ![](./src/assets/colony-unsdg.png)
 
-Develop the humanitarian within. Learn Truffle and Colony while applying the UN Sustainable Development Goals.
+Develop the humanitarian within. Learn Truffle and Colony while applying the [UN Sustainable Development Goals](https://www.un.org/sustainabledevelopment/sustainable-development-goals/).
 
 ## Prerequisites
 
