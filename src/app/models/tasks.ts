@@ -84,7 +84,7 @@ export const Tasks =
         desc: "Significantly reduce all forms of violence and related death rates everywhere"
     },
     {
-        title: "Strenghten Domestic Resource Mobilization",
+        title: "Strengthen Domestic Resource Mobilization",
         desc: "Strengthen domestic resource mobilization, including through international support to developing countries, to improve domestic capacity for tax and other revenue collection"
     }
 ]
