@@ -3,6 +3,8 @@ import { MatSnackBar, MatBottomSheet } from "@angular/material";
 import { AppService } from "./app.service";
 import { DomainsService } from "./services/domains.service";
 import { DomainInstance } from "./models/domain";
+import { Tasks } from "./models/tasks";
+import { Goals } from "./models/goals";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BottomSheetComponent} from './utils/bottomsheet.component';
 
@@ -19,7 +21,7 @@ export class AppComponent implements OnInit {
     thirdFormGroup: FormGroup;
     fourthFormGroup: FormGroup;
 
-  public title = "truffle-colony-angular";
+  public title = "Colony UNSDG";
   public status = "";
 
   public state = {
@@ -52,7 +54,13 @@ export class AppComponent implements OnInit {
       name: "",
       symbol: "",
     },
-    selectedDomain: DomainInstance
+    selectedDomain: {
+        name: "",
+        id: null,
+        desc: "",
+        img: "",
+        link: ""
+    }
   };
 
   constructor(@Inject(MatSnackBar) private matSnackBar: MatSnackBar,
@@ -80,8 +88,9 @@ export class AppComponent implements OnInit {
     this.appService.bottomSheetObservable.subscribe((state) => {
       console.log(state);
     });
-    this.ds.selectedDomainObservable.subscribe((domain: DomainInstance) => {
+    this.ds.selectedDomainObservable.subscribe((domain) => {
         this.model.selectedDomain = domain;
+        console.log(domain);
     })
   }
 
@@ -133,6 +142,8 @@ export class AppComponent implements OnInit {
   public async getColonyClient() {
     this.appService.getColonyClient(this.state.networkClient[0], this.model.colony.id).then( (res) => {
       this.state.colonyClient[0] = res;
+      this.model.selectedDomain.name = "Please select UNSDG, then add the goal as a DOMAIN";
+      this.setStatus("Success!");
     });
   }
 
@@ -141,6 +152,11 @@ export class AppComponent implements OnInit {
     this.setStatus("Initiating tx...");
     this.appService.addDomain(this.state.colonyClient[0], this.model.parentDomainId).then( (res) => {
       this.model.domain = res;
+      this.setStatus("Success!");
+      const index = this.model.selectedDomain.id - 1;
+      console.log(index);
+      this.model.task = Tasks[index];
+      console.log(this.model.task);
     }).catch( (err) => {
       this.setStatus("Error: See console");
       console.error(err);
@@ -155,6 +171,7 @@ export class AppComponent implements OnInit {
     this.model.task.desc = desc;
     this.appService.createTask(this.state.colonyClient[0], Number(domainId), taskObj).then( (res) => {
       this.model.taskObject = res;
+      this.setStatus("Success!");
     }).catch( (err) => {
       this.setStatus("Error: See console");
       console.error(err);
