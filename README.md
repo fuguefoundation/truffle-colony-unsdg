@@ -1,4 +1,4 @@
-# Colony UNSDG
+![](./src/assets/colony-unsdg.png)
 
 Develop the humanitarian within. Learn Truffle and Colony while applying the UN Sustainable Development Goals.
 
