@@ -1,0 +1,117 @@
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button (click)="openBottomSheet()">
+    <mat-icon aria-label="Meta">notes</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon aria-label="Github">code</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="row">
+    <!-- <mat-list>
+      <mat-list-item>Network: {{model.networkClient.addr}}</mat-list-item>
+      <mat-list-item>Account: {{model.networkClient.accountAddr}}</mat-list-item>
+      <mat-list-item *ngIf="model.token.address">Token: {{model.token.address}}</mat-list-item>
+      <mat-list-item *ngIf="model.colony.address">Colony: {{model.colony.address}} | ID: {{model.colony.id}}</mat-list-item> 
+    </mat-list> -->
+    <mat-list>
+      <mat-list-item *ngIf="model.domain.id">Domain ID: {{model.domain.id}} LocalSkillID: {{model.domain.localSkillId}} PotID: {{model.domain.potId}}</mat-list-item>
+      <br>
+      <mat-list-item *ngIf="model.taskObject">Task: {{model.taskObject | json}}</mat-list-item>
+    </mat-list>     
+</div>
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Create Token</ng-template>
+      <mat-card>
+        <!-- <mat-card-header>Create Token <span *ngIf="model.token.name">: {{model.token.name}} {{model.token.symbol}}</span></mat-card-header> -->
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput placeholder="Token Name" #tokenName formControlName="firstCtrl" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Token Symbol" #tokenSymbol formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperNext (click)="token(tokenName.value, tokenSymbol.value)">Create Token</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Create Colony</ng-template>
+      <mat-card>
+        <!-- <mat-card-header>Create Colony and Get Colony Cient</mat-card-header> -->
+        <mat-card-content>
+          <mat-form-field class="long-input-field">
+            <input matInput placeholder="Token Address" value="{{model.token.address}}" #tokenAddress formControlName="secondCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext color="primary" (click)="createColony(tokenAddress.value)">Create Colony</button>
+          </div>          
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Add Domain</ng-template>
+      <mat-card >
+            <mat-card-header>
+                <div mat-card-avatar class="goals-header-image"></div>
+                <mat-card-title>{{model.selectedDomain.name}}</mat-card-title>
+                <mat-card-subtitle>{{model.selectedDomain.desc}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+      <div>
+        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext (click)="addDomain()">Add Domain</button>
+      </div>
+    </form>
+    <app-domains></app-domains>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Create Task</ng-template>
+      <mat-card>
+        <!-- <mat-card-header>Create Task <span *ngIf="model.task.title">: {{model.task.title}} {{model.task.desc}}</span></mat-card-header> -->
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput placeholder="Task Title" #taskTitle>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Task Description" #taskDesc>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Domain ID" #domainId>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext (click)="createTask(taskTitle.value, taskDesc.value, domainId.value)">Create Task</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    Go save the world.
+    <div>
+      <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+<app-tx></app-tx>
+<!-- <button mat-raised-button (click)="openBottomSheet()">Meta</button> -->
