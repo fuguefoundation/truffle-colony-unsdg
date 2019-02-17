@@ -150,7 +150,6 @@ export class AppComponent implements OnInit {
       this.model.domain = res;
       this.setStatus("Success!");
       const index = this.selectedDomain.id - 1;
-      console.log(index);
       this.model.task = Tasks[index];
       console.log(this.model.task);
     }).catch( (err) => {
@@ -180,5 +179,11 @@ export class AppComponent implements OnInit {
 
   openBottomSheet(): void {
     const bottomSheetRef = this.bottomSheet.open(BottomSheetComponent);
-  }  
+  }
+
+  reset(s) { 
+    s.reset();
+    this.state.colonyClient = [];
+    this.model.domain.id = null;
+  }
 }
