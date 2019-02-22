@@ -1,14 +1,19 @@
 {
   "ignore": [
     "README.md",
-    ".gitignore"
+    ".gitignore",
+    ".gitmodules",
+    "presentation"
   ],
   "commands": {
-    "Compile contracts": "truffle compile",
-    "Migrate contracts": "truffle migrate",
-    "Test contracts": "truffle test"
+    "Initialize Colony Network": "yarn initialize",
+    "Start Network in Ganache": "yarn start-ganache",
+    "Compile and Migrate Contracts": "yarn deploy-contracts",
+    "Serve Contract ABIs": "yarn start-trufflepig",
+    "Serve Dapp in Browser": "yarn start",
+    "Test contracts": "yarn test"
   },
   "hooks": {
-    "post-unpack": ""
+    "post-unpack": "yarn"
   }
 }
