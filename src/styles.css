@@ -26,3 +26,6 @@ button.mat-raised-button {
 .mat-card-content p {
     font-size: 1.5em;
 }
+.mat-card-header {
+    margin-top: 30px;
+}
