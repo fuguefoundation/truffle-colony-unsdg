@@ -23,3 +23,6 @@
 button.mat-raised-button {
     margin: 1%;
 }
+.mat-card-content p {
+    font-size: 1.5em;
+}
