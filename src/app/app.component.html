@@ -10,12 +10,29 @@
 </mat-toolbar>
 
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Welcome</ng-template>
+      <mat-card>
+        <mat-card-header>Develop the humanitarian</mat-card-header>
+        <mat-card-content>
+            <p>Combining the governance model of Colony and the ideals of the UN Sustainable Development Goals, we created a TruffleBox that teaches developers how to be both humanitarians and coders. The dapp is a developer starter kit that shows how to harness the project management capabilities of Colony to incentivize, organize, and govern the work needed to tackle the UNSDGs.</p>
+            <p>The <strong>Colony Network client</strong> has been created and assigned your main account as owner. Next we need to create or assign a native token so that workers can earn payouts and reputation.</p>
+            <p></p><mat-icon aria-label="Meta">notes</mat-icon> Click the menu icon for address information.
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>Begin</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+    <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Create Token</ng-template>
       <mat-card>
         <!-- <mat-card-header>Create Token <span *ngIf="model.token.name">: {{model.token.name}} {{model.token.symbol}}</span></mat-card-header> -->
         <mat-card-content>
+          <p>Every colony has its own token. These are the tokens that, when earned as a task bounty, also create reputation for the receiver.</p><p>What these tokens represent apart from this is up to the colonyto establish. For example, they may have financial value, or they may be purely symbolic.</p>
           <mat-form-field>
             <input matInput placeholder="Token Name" #tokenName formControlName="firstCtrl">
           </mat-form-field>
@@ -23,6 +40,7 @@
             <input matInput placeholder="Token Symbol" #tokenSymbol formControlName="firstCtrl">
           </mat-form-field>
           <div>
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" matStepperNext (click)="token(tokenName.value, tokenSymbol.value)">Create Token</button>
           </div>
         </mat-card-content>
@@ -37,6 +55,8 @@
       <mat-card>
         <!-- <mat-card-header>Create Colony and Get Colony Cient</mat-card-header> -->
         <mat-card-content>
+          <p>Colonies exist to enable collaboration between their members, and direct collective efforts towards some common goal(s). A colony is in control of changing the supply of its own tokens.</p>
+          <p>Here we assign the token we just created to the Colony, but this address could be any token or ERC20.</p>
           <mat-form-field class="long-input-field">
             <input matInput placeholder="Token Address" value="{{model.token.address}}" #tokenAddress formControlName="secondCtrl">
           </mat-form-field>
@@ -52,7 +72,11 @@
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Add Domain</ng-template>
       <mat-card >
-            <mat-card-header>
+          <mat-card-content>
+            <p>Of course, without structure, a large colony could quickly become difficult to navigate due to thesheer number of tasks —– domains solve this problem.  A domain is like a folder in a sharedfilesystem, except instead of containing files and folders, it can contain sub-domains and tasks.This simple modularity enables great flexibility as to how an organisation may be structure.</p>
+            <p>Here, the 17 UN Sustainable Development Goals are used as an example of a domain level division of work to be accomplished with the colony.</p>        
+          </mat-card-content>
+        <mat-card-header>
                 <div mat-card-avatar class="goals-header-image"></div>
                 <mat-card-title>{{selectedDomain.name}}</mat-card-title>
                 <mat-card-subtitle>{{selectedDomain.desc}}</mat-card-subtitle>
@@ -69,12 +93,15 @@
     <form [formGroup]="fourthFormGroup">
       <ng-template matStepLabel>Create Task</ng-template>
       <mat-card>
+          <mat-card-content>
+            <p>The smallest structural unit in a colony is the ‘task’. A task represents a unit of work requiring nofurther subdivision or delegation. A task has three roles (addresses) associated with it (manager, evaluator, worker) that will accomplish the parameters of the task.</p>
+            <p>Using the UNSDG selected as the domain, a sample task is listed that is one of the UN's targets for this goal.</p>
+          </mat-card-content>
             <mat-card-header>
                 <div mat-card-avatar class="goals-header-image"></div>
                 <mat-card-title>{{selectedDomain.name}}</mat-card-title>
                 <mat-card-subtitle>{{selectedDomain.desc}}</mat-card-subtitle>
-            </mat-card-header>          
-        <!-- <mat-card-header>Create Task <span *ngIf="model.task.title">: {{model.task.title}} {{model.task.desc}}</span></mat-card-header> -->
+            </mat-card-header>
         <mat-card-content>
           <mat-form-field>
             <input matInput placeholder="Task Title" value="{{model.task.title}}" formControlName="fourthCtrl" #taskTitle>
@@ -98,6 +125,9 @@
     <div class="row">
         <div class="col-6">
             <mat-card style="max-width: 50%;">
+                <mat-card-content>
+                    <p>The task has been created! Read the <a href="https://colony.io/whitepaper.pdf" target="_blank">White Paper</a> or check out the <a href="https://docs.colony.io/" target="_blank">Colony docs</a> for where to go from here.</p>
+                </mat-card-content>
                 <mat-card-header>
                     <div mat-card-avatar class="goals-header-image"></div>
                     <mat-card-title>{{selectedDomain.name}}</mat-card-title>
