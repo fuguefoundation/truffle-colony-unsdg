@@ -79,6 +79,3 @@ Open a new terminal window and run the tests:
 ```
 yarn test
 ```
-## TODO
-
-* Add welcome to stepper
