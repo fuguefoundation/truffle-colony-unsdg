@@ -4,4 +4,5 @@
 cd lib/colonyNetwork
 
 # Start Trufflepig using the accounts defined in the colonyNetwork directory
-trufflepig --ganacheKeyFile ganache-accounts.json
+# trufflepig --ganacheKeyFile ganache-accounts.json
+../../node_modules/.bin/trufflepig --ganacheKeyFile ganache-accounts.json
